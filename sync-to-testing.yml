@@ -1,0 +1,43 @@
+name: Auto Sync to Testing Repository
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch in Developing repository
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the Developing repository (source repository)
+      - name: Checkout Developing Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for accurate sync
+
+      # Step 2: Set up Git user
+      - name: Configure Git User
+        run: |
+          git config --global user.name "sneha6396"
+          git config --global user.email "ikuttisneha@gmail.com"
+
+      # Step 3: Clone the Testing repository to a temporary directory
+      - name: Clone Testing Repository
+        run: |
+          git clone https://sneha6396:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/sneha6396/Testing-repo.git /tmp/testing-repo
+
+      # Step 4: Sync files from Developing to Testing repository
+      - name: Sync Files to Testing Repository
+        run: |
+          rsync -av --delete ./ /tmp/testing-repo/ --exclude .git
+          cd /tmp/testing-repo
+          git status  # Check the current status after sync
+
+      # Step 5: Commit and Push changes to Testing repository
+      - name: Commit and Push Changes
+        run: |
+          cd /tmp/testing-repo
+          git add -A
+          git commit -m "Auto-sync: Updating from Developing repository" || echo "No changes to commit."
+          git push origin main

@@ -25,7 +25,7 @@ jobs:
       # Step 3: Clone the Testing repository to a temporary directory
       - name: Clone Testing Repository
         run: |
-          git clone https://sneha6396:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/sneha6396/Testing.git /tmp/testing-repo
+          git clone https://sneha6396:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/sneha6396/Testing /tmp/testing-repo
 
       # Step 4: Sync files from Developing to Testing repository
       - name: Sync Files to Testing Repository
@@ -37,7 +37,7 @@ jobs:
       # Step 5: Commit and Push changes to Testing repository
       - name: Commit and Push Changes
         run: |
-          cd /tmp/testing
+          cd /tmp/testing-repo
           git add -A
           git commit -m "Auto-sync: Updating from Developing repository" || echo "No changes to commit."
           git push origin main

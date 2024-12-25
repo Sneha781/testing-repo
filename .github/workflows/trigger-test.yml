@@ -3,15 +3,15 @@ name: Trigger Test Workflow
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   trigger-test:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Testing Repository Workflow
-        uses: peter-evans/repository-dispatch@v1  
+        uses: peter-evans/repository-dispatch@v1  # Ensure the action version is correct
         with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  
-          repository: <Sneha6396>/<Testing>  
-          event-type: run-tests  
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Ensure the token has proper permissions
+          repository: Sneha6396/Testing  # Correct repository name format
+          event-type: run-tests

@@ -12,6 +12,6 @@ jobs:
       - name: Trigger Testing Repository Workflow
         uses: peter-evans/repository-dispatch@v1  
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  
           repository: <Sneha6396>/<Testing>  
           event-type: run-tests  

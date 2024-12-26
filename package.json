@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "testing-repo",
   "version": "1.0.0",
   "main": "index.js",
@@ -11,5 +12,9 @@
   "description": "",
   "devDependencies": {
     "jest": "^29.7.0"
+=======
+  "scripts": {
+    "test": "jest"
+>>>>>>> 1d353fbb2bc2262e2d1e9988071150e9cb252f24
   }
 }

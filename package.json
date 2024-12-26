@@ -1,20 +1,10 @@
 {
-<<<<<<< HEAD
-  "name": "testing-repo",
+  "name": "your-package-name",
   "version": "1.0.0",
+  "description": "A brief description of your package",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "jest": "^29.7.0"
-=======
-  "scripts": {
-    "test": "jest"
->>>>>>> 1d353fbb2bc2262e2d1e9988071150e9cb252f24
-  }
+  "dependencies": {}
 }
